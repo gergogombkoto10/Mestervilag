@@ -202,3 +202,46 @@ footer {
   transform: scale(1.04);
   box-shadow: 0 12px 30px rgba(255, 204, 0, 0.35);
 }
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: rgba(255,204,0,0.18);
+  border-radius: 50%;
+  filter: blur(120px);
+  top: -120px;
+  right: -120px;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  text-shadow: 0 10px 40px rgba(0,0,0,0.45);
+}
+
+.card {
+  background: linear-gradient(145deg,#ffffff,#f3f3f3);
+}
+
+.categories {
+  background: linear-gradient(to bottom,#f5f5f5,#ffffff);
+}
+
+.step {
+  border: 1px solid #ececec;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+}
+
+footer {
+  font-size: 18px;
+  letter-spacing: 1px;
+}
