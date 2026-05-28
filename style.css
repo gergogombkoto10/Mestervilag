@@ -338,3 +338,44 @@ nav a:hover::after {
     transform: translateY(0);
   }
 }
+.join {
+  margin: 80px 8%;
+  padding: 60px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #111, #333);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+
+.join h2 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.join p {
+  color: #ddd;
+  font-size: 18px;
+  max-width: 600px;
+}
+
+.join button {
+  background: #ffcc00;
+  color: #111;
+  border: none;
+  padding: 18px 28px;
+  border-radius: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+@media(max-width: 900px) {
+  .join {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 25px;
+  }
+}
