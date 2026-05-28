@@ -564,3 +564,9 @@ nav a:hover::after {
   background: #111;
   color: white;
 }
+.success-message {
+  margin-top: 25px;
+  color: green;
+  font-weight: bold;
+  display: none;
+}
