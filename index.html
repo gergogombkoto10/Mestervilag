@@ -200,6 +200,17 @@
 <footer>
   <p>© 2026 Mestervilág</p>
 </footer>
+<script>
+const form = document.querySelector(".register-form");
+const success = document.querySelector(".success-message");
 
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  success.style.display = "block";
+
+  form.reset();
+});
+</script>
 </body>
 </html>
