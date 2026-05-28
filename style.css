@@ -413,3 +413,45 @@ nav a:hover::after {
 .review h4 {
   color: #ffb400;
 }
+.card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255,204,0,0.15);
+}
+
+.card::before {
+  content: "TOP";
+  position: absolute;
+  top: 18px;
+  right: -35px;
+  background: #ffcc00;
+  color: #111;
+  padding: 8px 40px;
+  transform: rotate(45deg);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.card img {
+  transition: 0.4s;
+}
+
+.card:hover img {
+  transform: scale(1.08);
+}
+
+.card button {
+  transition: 0.3s;
+}
+
+.card button:hover {
+  background: #111;
+  color: white;
+}
+
+.card span {
+  background: rgba(255,204,0,0.15);
+  padding: 8px 12px;
+  border-radius: 999px;
+  display: inline-block;
+}
