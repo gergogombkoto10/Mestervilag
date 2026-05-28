@@ -570,3 +570,15 @@ nav a:hover::after {
   font-weight: bold;
   display: none;
 }
+.register-form input:focus,
+.register-form textarea:focus {
+  outline: 2px solid #ffcc00;
+  border-color: #ffcc00;
+}
+
+.success-message {
+  background: #e8f8ee;
+  color: #137333;
+  padding: 16px;
+  border-radius: 14px;
+}
