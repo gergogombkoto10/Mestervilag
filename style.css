@@ -286,3 +286,55 @@ footer {
   cursor: pointer;
   width: 100%;
 }
+.navbar {
+  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.85);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  z-index: 999;
+}
+
+.logo {
+  color: #111;
+  letter-spacing: 1px;
+}
+
+nav a {
+  position: relative;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #ffb400;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #ffcc00;
+  left: 0;
+  bottom: -6px;
+  transition: 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+.hero-content {
+  animation: fadeUp 1s ease;
+}
+
+@keyframes fadeUp {
+
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
