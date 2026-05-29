@@ -214,7 +214,28 @@ const db = getFirestore(app);
 
 const form = document.querySelector(".register-form");
 const success = document.querySelector(".success-message");
+const szakemberekLista = document.querySelector("#szakemberek");
 
+async function szakemberekBetoltese() {
+  const querySnapshot = await getDocs(collection(db, "jelentkezesek"));
+
+  szakemberekLista.innerHTML = "";
+
+  querySnapshot.forEach((doc) => {
+    const adat = doc.data();
+
+    szakemberekLista.innerHTML += `
+      <div class="card">
+        <h3>${adat.nev}</h3>
+        <p>${adat.szakma}</p>
+        <span>⭐ Új szakember • ${adat.varos}</span>
+        <button>Ajánlatkérés</button>
+      </div>
+    `;
+  });
+}
+
+szakemberekBetoltese();
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
