@@ -196,16 +196,47 @@
 <footer>
   <p>© 2026 Mestervilág</p>
 </footer>
-<script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDnhtPS-9vNzOBKJL_ERxvh7FzdHDK6HJY",
+  authDomain: "mestervilag-59010.firebaseapp.com",
+  projectId: "mestervilag-59010",
+  storageBucket: "mestervilag-59010.firebasestorage.app",
+  messagingSenderId: "1063304594427",
+  appId: "1:1063304594427:web:ba7e30cfcdeee4b88a015e"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 const form = document.querySelector(".register-form");
 const success = document.querySelector(".success-message");
 
-form.addEventListener("submit", function(e) {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  success.style.display = "block";
+  const inputs = form.querySelectorAll("input, textarea");
 
-  form.reset();
+  try {
+    await addDoc(collection(db, "jelentkezesek"), {
+      nev: inputs[0].value,
+      szakma: inputs[1].value,
+      varos: inputs[2].value,
+      telefon: inputs[3].value,
+      bemutatkozas: inputs[4].value,
+      datum: new Date().toISOString()
+    });
+
+    success.style.display = "block";
+    form.reset();
+
+  } catch (error) {
+    alert("Hiba történt a mentés során!");
+    console.error(error);
+  }
 });
 </script>
 </body>
