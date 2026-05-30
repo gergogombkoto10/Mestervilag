@@ -193,7 +193,11 @@ const db = getFirestore(app);
 const form = document.querySelector(".register-form");
 const success = document.querySelector(".success-message");
 const szakemberekLista = document.querySelector("#szakemberek");
+const szakmaKereso = document.querySelector("#szakmaKereso");
+const varosKereso = document.querySelector("#varosKereso");
+const keresesGomb = document.querySelector("#keresesGomb");
 
+let osszesSzakember = [];
 async function szakemberekBetoltese() {
   const querySnapshot = await getDocs(collection(db, "jelentkezesek"));
 
@@ -201,7 +205,7 @@ async function szakemberekBetoltese() {
 
   querySnapshot.forEach((doc) => {
     const adat = doc.data();
-
+osszesSzakember.push(adat);
     szakemberekLista.innerHTML += `
       <div class="card">
         <h3>${adat.nev}</h3>
@@ -212,7 +216,28 @@ async function szakemberekBetoltese() {
     `;
   });
 }
+keresesGomb.addEventListener("click", () => {
+    const szakma = szakmaKereso.value.toLowerCase();
+    const varos = varosKereso.value.toLowerCase();
 
+    szakemberekLista.innerHTML = "";
+
+    osszesSzakember.forEach((adat) => {
+        const szakmaEgyezik = adat.szakma.toLowerCase().includes(szakma);
+        const varosEgyezik = adat.varos.toLowerCase().includes(varos);
+
+        if (szakmaEgyezik && varosEgyezik) {
+            szakemberekLista.innerHTML += `
+                <div class="card">
+                    <h3>${adat.nev}</h3>
+                    <p>${adat.szakma}</p>
+                    <span>⭐ Új szakember • ${adat.varos}</span>
+                    <button>Ajánlatkérés</button>
+                </div>
+            `;
+        }
+    });
+});
 szakemberekBetoltese();
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
