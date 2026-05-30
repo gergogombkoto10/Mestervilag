@@ -210,7 +210,7 @@ osszesSzakember.push(adat);
       <div class="card">
         <h3>${adat.nev}</h3>
         <p>${adat.szakma}</p>
-       <span>⭐ Új szakember • ${adat.varos}</span>
+     <span>⭐ ${adat.ertekeles || "5.0"} • ${adat.varos}</span>
 <p>📞 ${adat.telefon || "Nincs megadva"}</p>
 <a href="tel:${adat.telefon}">
   <button>Hívás</button>
@@ -234,7 +234,7 @@ keresesGomb.addEventListener("click", () => {
                 <div class="card">
                     <h3>${adat.nev}</h3>
                     <p>${adat.szakma}</p>
-                    <span>⭐ Új szakember • ${adat.varos}</span>
+                    <span>⭐ ${adat.ertekeles || "5.0"} • ${adat.varos}</span>
 <p>📞 ${adat.telefon || "Nincs megadva"}</p>
 <a href="tel:${adat.telefon}">
   <button>Hívás</button>
