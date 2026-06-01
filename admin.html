@@ -1,1 +1,50 @@
-<h1>Admin oldal</h1>
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<title>Mestervilág Admin</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1 style="text-align:center;margin:30px;">Admin felület</h1>
+
+<div id="lista" style="max-width:1000px;margin:auto;"></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
+
+const firebaseConfig = {
+ apiKey: "AIzaSyDnhtPS-9vNzOBKJL_ERxvh7FzdHDK6HJY"
+  authDomain: "mestervilag-59010.firebaseapp.com",
+  projectId: "mestervilag-59010",
+  storageBucket: "mestervilag-59010.firebasestorage.app",
+  messagingSenderId: "1063304594427",
+  appId: "1:1063304594427:web:ba7e30cfcdeee4b88a015e"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const lista = document.getElementById("lista");
+
+const snapshot = await getDocs(collection(db,"jelentkezesek"));
+
+snapshot.forEach((doc) => {
+  const adat = doc.data();
+
+  lista.innerHTML += `
+    <div class="card">
+      <h3>${adat.nev}</h3>
+      <p>${adat.szakma}</p>
+      <p>${adat.varos}</p>
+      <p>${adat.telefon}</p>
+      <p>⭐ ${adat.ertekeles || 5.0}</p>
+    </div>
+  `;
+});
+</script>
+
+</body>
+</html>
