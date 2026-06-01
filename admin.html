@@ -13,7 +13,7 @@
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
+import { getFirestore, collection, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
 
 const firebaseConfig = {
  apiKey: "AIzaSyDnhtPS-9vNzOBKJL_ERxvh7FzdHDK6HJY",
@@ -33,7 +33,7 @@ const snapshot = await getDocs(collection(db,"jelentkezesek"));
 
 snapshot.forEach((doc) => {
   const adat = doc.data();
-
+adat.id = doc.id;
   lista.innerHTML += `
     <div class="card">
       <h3>${adat.nev}</h3>
@@ -41,9 +41,18 @@ snapshot.forEach((doc) => {
       <p>${adat.varos}</p>
       <p>${adat.telefon}</p>
       <p>⭐ ${adat.ertekeles || 5.0}</p>
+      <button onclick="torles('${adat.id}')">
+  Törlés
+</button>
     </div>
   `;
 });
+ window.torles = async function(id) {
+  if (!confirm("Biztos törlöd?")) return;
+
+  await deleteDoc(doc(db, "jelentkezesek", id));
+  location.reload();
+};
 </script>
 
 </body>
