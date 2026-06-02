@@ -586,3 +586,6 @@ nav a:hover::after {
     background: #2563eb !important;
     color: white !important;
 }
+.card button {
+    margin-top: 10px;
+}
