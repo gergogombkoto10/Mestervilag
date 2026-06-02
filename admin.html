@@ -12,6 +12,12 @@
 <div id="lista" style="max-width:1000px;margin:auto;"></div>
 
 <script type="module">
+ const jelszo = prompt("Admin jelszó:");
+
+if (jelszo !== "Mestervilag2026") {
+  document.body.innerHTML = "<h1>Hozzáférés megtagadva</h1>";
+  throw new Error("Nincs jogosultság");
+}
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
 import { getFirestore, collection, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
 
