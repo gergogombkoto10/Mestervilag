@@ -217,6 +217,7 @@ osszesSzakember.push(adat);
 <a href="tel:${adat.telefon}">
   <button>Hívás</button>
 </a>
+<button onclick="ajanlatKeres('${adat.nev}')">Ajánlatkérés</button>
       </div>
     `;
   });
@@ -241,6 +242,7 @@ keresesGomb.addEventListener("click", () => {
 <a href="tel:${adat.telefon}">
   <button>Hívás</button>
 </a>
+<button onclick="ajanlatKeres('${adat.nev}')">Ajánlatkérés</button>
                 </div>
             `;
         }
@@ -271,6 +273,13 @@ form.addEventListener("submit", async (e) => {
     console.error(error);
   }
 });
+  window.ajanlatKeres = function(nev) {
+  const uzenet = prompt(`Mit szeretnél üzenni neki? (${nev})`);
+
+  if (!uzenet) return;
+
+  alert("Ajánlatkérés elküldve!");
+};
 </script>
 </body>
 </html>
