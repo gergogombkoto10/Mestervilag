@@ -582,3 +582,7 @@ nav a:hover::after {
   padding: 16px;
   border-radius: 14px;
 }
+.ajanlat-btn {
+    background: #2563eb !important;
+    color: white !important;
+}
