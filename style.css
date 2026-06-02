@@ -589,3 +589,11 @@ nav a:hover::after {
 .card button {
     margin-top: 10px;
 }
+.ajanlat-btn {
+    transition: 0.3s;
+}
+
+.ajanlat-btn:hover {
+    background: #000 !important;
+    color: white !important;
+}
