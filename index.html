@@ -178,7 +178,7 @@
 </footer>
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDnhtPS-9vNzOBKJL_ERxvh7FzdHDK6HJY",
@@ -277,12 +277,24 @@ form.addEventListener("submit", async (e) => {
     console.error(error);
   }
 });
-  window.ajanlatKeres = function(nev) {
-  const uzenet = prompt(`Mit szeretnél üzenni neki? (${nev})`);
+ window.ajanlatKeres = async function(nev) {
+    const uzenet = prompt(`Mit szeretnél üzenni neki? (${nev})`);
 
-  if (!uzenet) return;
+    if (!uzenet) return;
 
-  alert("Ajánlatkérés elküldve!");
+    try {
+        await addDoc(collection(db, "ajanlatkeresek"), {
+            szakember: nev,
+            uzenet: uzenet,
+            datum: new Date().toISOString()
+        });
+
+        alert("Ajánlatkérés elküldve!");
+    } catch (error) {
+        alert("Hiba történt!");
+        console.error(error);
+    }
+};
 };
 </script>
 </body>
