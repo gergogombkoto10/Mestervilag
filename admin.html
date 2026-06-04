@@ -19,8 +19,8 @@ if (jelszo !== "Mestervilag2026") {
   throw new Error("Nincs jogosultság");
 }
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
-import { getFirestore, collection, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
-
+import { getFirestore, collection, getDocs, deleteDoc, doc }
+from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
 const firebaseConfig = {
  apiKey: "AIzaSyDnhtPS-9vNzOBKJL_ERxvh7FzdHDK6HJY",
   authDomain: "mestervilag-59010.firebaseapp.com",
@@ -59,6 +59,24 @@ adat.id = doc.id;
   await deleteDoc(doc(db, "jelentkezesek", id));
   location.reload();
 };
+ lista.innerHTML += `
+    <h2 style="margin-top:40px;">📩 Ajánlatkérések</h2>
+`;
+
+const ajanlatok = await getDocs(collection(db, "ajanlatkeresek"));
+
+ajanlatok.forEach((doc) => {
+    const adat = doc.data();
+
+    lista.innerHTML += `
+        <div class="card">
+            <h3>${adat.szakember}</h3>
+            <p><strong>Üzenet:</strong></p>
+            <p>${adat.uzenet}</p>
+            <p>${new Date(adat.datum).toLocaleString()}</p>
+        </div>
+    `;
+});
 </script>
 
 </body>
