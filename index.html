@@ -189,6 +189,7 @@ a Mestervilágon gyorsan és egyszerűen kapcsolatba léphetsz a számodra megfe
 <input type="text" placeholder="Szakma" required>
 <input type="text" placeholder="Város" required>
 <input type="tel" placeholder="Telefonszám" required>
+    <input type="url" placeholder="Profilkép link">
 <textarea placeholder="Rövid bemutatkozás" required></textarea>
 
     <button type="submit">
@@ -266,9 +267,11 @@ if (adat.Premium) {
 }
     szakemberekLista.innerHTML += `
       <div class="card">
-    <div class="avatar ${adat.Premium ? 'premium-avatar' : ''}">
+  ${adat.kep ? `<img class="profile-img" src="${adat.kep}" alt="${adat.nev}">` : `
+<div class="avatar ${adat.Premium ? 'premium-avatar' : ''}">
     ${adat.nev.charAt(0)}
 </div>
+`}
   <div class="verified">✓ Ellenőrzött szakember</div>
   <h3>  ${adat.Premium ? '👑 ' : ''}  ${adat.nev}</h3>
 
@@ -300,9 +303,11 @@ keresesGomb.addEventListener("click", () => {
         if (szakmaEgyezik && varosEgyezik) {
             szakemberekLista.innerHTML += `
                 <div class="card">
-      <div class="avatar ${adat.Premium ? 'premium-avatar' : ''}">
+   ${adat.kep ? `<img class="profile-img" src="${adat.kep}" alt="${adat.nev}">` : `
+<div class="avatar ${adat.Premium ? 'premium-avatar' : ''}">
     ${adat.nev.charAt(0)}
-    </div>
+</div>
+`}
     <div class="verified">✓ Ellenőrzött szakember</div>
             
  <h3> ${adat.Premium ? '👑 ' : ''} ${adat.nev}</h3>
