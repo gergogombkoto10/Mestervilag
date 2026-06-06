@@ -691,12 +691,20 @@ button,
 }
 
 .stat-box h3 {
-    font-size: 32px;
+    font-size: 40px;
+    font-weight: 700;
     margin-bottom: 8px;
     color: #f59e0b;
 }
 
+
 .stat-box p {
     color: #666;
     margin: 0;
+}
+.section-subtitle{
+    text-align:center;
+    color:#666;
+    margin-top:-10px;
+    margin-bottom:35px;
 }
