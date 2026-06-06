@@ -800,4 +800,7 @@ button,
     color:#666;
     font-weight:600;
     margin-bottom:12px;
+.premium-card{
+    border:2px solid #f59e0b !important;
+    box-shadow:0 15px 35px rgba(245,158,11,0.2) !important;
 }
