@@ -38,6 +38,10 @@
 </section>
 
 <section class="categories">
+  <section class="premium-section">
+    <h2>⭐ Kiemelt szakemberek</h2>
+    <div id="premiumSzakemberek" class="cards"></div>
+</section>
   <h2>Népszerű szakemberek</h2>
 
   <div class="cards" id="szakemberek">
@@ -195,6 +199,7 @@ const db = getFirestore(app);
 const form = document.querySelector(".register-form");
 const success = document.querySelector(".success-message");
 const szakemberekLista = document.querySelector("#szakemberek");
+  const premiumLista = document.querySelector("#premiumSzakemberek");
 const szakmaKereso = document.querySelector("#szakmaKereso");
 const varosKereso = document.querySelector("#varosKereso");
 const keresesGomb = document.querySelector("#keresesGomb");
@@ -207,6 +212,17 @@ async function szakemberekBetoltese() {
 
   querySnapshot.forEach((doc) => {
     const adat = doc.data();
+    if (adat.Premium) {
+    premiumLista.innerHTML += `
+    <div class="card">
+        <h3>👑 ${adat.nev}</h3>
+        <p>${adat.szakma}</p>
+        <p>${adat.bemutatkozas || ""}</p>
+        <span>⭐ ${adat.ertekeles || "5.0"} • ${adat.varos}</span>
+        <p>📞 ${adat.telefon || "Nincs megadva"}</p>
+    </div>
+    `;
+}
 if (adat.premium) {
     osszesSzakember.unshift(adat);
 } else {
