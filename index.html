@@ -207,10 +207,17 @@ async function szakemberekBetoltese() {
 
   querySnapshot.forEach((doc) => {
     const adat = doc.data();
-osszesSzakember.push(adat);
+if (adat.premium) {
+    osszesSzakember.unshift(adat);
+} else {
+    osszesSzakember.push(adat);
+}
     szakemberekLista.innerHTML += `
       <div class="card">
-        <h3>${adat.nev}</h3>
+      
+  <h3>  ${adat.premium ? '👑 ' : ''}  ${adat.nev}</h3>
+
+
         <p>${adat.szakma}</p>
      <span>⭐ ${adat.ertekeles || "5.0"} • ${adat.varos}</span>
 <p>📞 ${adat.telefon || "Nincs megadva"}</p>
@@ -237,7 +244,10 @@ keresesGomb.addEventListener("click", () => {
         if (szakmaEgyezik && varosEgyezik) {
             szakemberekLista.innerHTML += `
                 <div class="card">
-                    <h3>${adat.nev}</h3>
+                   
+ <h3> ${adat.premium ? '👑 ' : ''} ${adat.nev}</h3>
+ 
+
                     <p>${adat.szakma}</p>
                     <span>⭐ ${adat.ertekeles || "5.0"} • ${adat.varos}</span>
 <p>📞 ${adat.telefon || "Nincs megadva"}</p>
