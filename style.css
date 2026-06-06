@@ -790,3 +790,14 @@ button,
     font-weight:600;
     margin-bottom:12px;
 }
+.card h3{
+    margin-top:10px;
+    margin-bottom:5px;
+    font-size:22px;
+}
+
+.card p:first-of-type{
+    color:#666;
+    font-weight:600;
+    margin-bottom:12px;
+}
