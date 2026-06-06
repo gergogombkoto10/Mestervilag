@@ -266,7 +266,9 @@ if (adat.premium) {
 }
     szakemberekLista.innerHTML += `
       <div class="card">
-      
+    <div class="avatar">
+    ${adat.nev.charAt(0)}
+</div>  
   <h3>  ${adat.Premium ? '👑 ' : ''}  ${adat.nev}</h3>
 
 
@@ -297,7 +299,9 @@ keresesGomb.addEventListener("click", () => {
         if (szakmaEgyezik && varosEgyezik) {
             szakemberekLista.innerHTML += `
                 <div class="card">
-                   
+      <div class="avatar">
+    ${adat.nev.charAt(0)}
+</div>             
  <h3> ${adat.Premium ? '👑 ' : ''} ${adat.nev}</h3>
  
 
