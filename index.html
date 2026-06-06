@@ -259,14 +259,14 @@ async function szakemberekBetoltese() {
     </div>
     `;
 }
-if (adat.premium) {
+if (adat.Premium) {
     osszesSzakember.unshift(adat);
 } else {
     osszesSzakember.push(adat);
 }
     szakemberekLista.innerHTML += `
       <div class="card">
-    <div class="avatar ${adat.Premium ? 'premium-avatar' : ''}">
+    <div class="avatar ${adat.Premium ? 'Premium-avatar' : ''}">
     ${adat.nev.charAt(0)}
 </div>
   
