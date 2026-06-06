@@ -668,3 +668,35 @@ button,
 .card.premium {
     border: 1px solid #facc15 !important;
 }
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 50px 0;
+    flex-wrap: wrap;
+}
+
+.stat-box {
+    background: white;
+    padding: 25px 35px;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    text-align: center;
+    min-width: 180px;
+    transition: 0.3s;
+}
+
+.stat-box:hover {
+    transform: translateY(-4px);
+}
+
+.stat-box h3 {
+    font-size: 32px;
+    margin-bottom: 8px;
+    color: #f59e0b;
+}
+
+.stat-box p {
+    color: #666;
+    margin: 0;
+}
