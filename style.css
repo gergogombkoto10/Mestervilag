@@ -18,6 +18,8 @@ body {
   background: white;
   position: sticky;
   top: 0;
+  backdrop-filter: blur(10px);
+box-shadow: 0 2px 15px rgba(0,0,0,0.06);
 }
 
 .logo {
@@ -114,17 +116,18 @@ nav a {
   gap: 20px;
 }
 
-.card {
-  background: white;
-  padding: 30px;
-  border-radius: 20px;
-  font-size: 22px;
-  font-weight: bold;
-  transition: 0.3s;
+.card{
+    background:white;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    transition:all .3s ease;
+    border:1px solid #f1f5f9;
 }
 
-.card:hover {
-  transform: translateY(-5px);
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 40px rgba(0,0,0,0.12);
 }
 
 .steps {
