@@ -298,38 +298,38 @@ keresesGomb.addEventListener("click", () => {
     szakemberekLista.innerHTML = "";
 
     osszesSzakember.forEach((adat) => {
-        const szakmaEgyezik = adat.szakma.toLowerCase().includes(szakma);
-        const varosEgyezik = adat.varos.toLowerCase().includes(varos);
+        const szakmaEgyezik = (adat.szakma || "").toLowerCase().includes(szakma);
+        const varosEgyezik = (adat.varos || "").toLowerCase().includes(varos);
 
         if (szakmaEgyezik && varosEgyezik) {
             szakemberekLista.innerHTML += `
-                <div class="card">
-   ${adat.kep ? `<img class="profile-img" src="${adat.kep}" alt="${adat.nev}">` : `
-<div class="avatar ${adat.Premium ? 'premium-avatar' : ''}">
-    ${adat.nev.charAt(0)}
-</div>
-`}
-    <div class="verified">✓ Ellenőrzött szakember</div>
-            
- <h3> ${adat.Premium ? '👑 ' : ''} ${adat.nev}</h3>
- 
+                <div class="card ${adat.Premium ? 'premium-card' : ''}">
+                    ${adat.kep ? `<img class="profile-img" src="${adat.kep}" alt="${adat.nev}">` : `
+                        <div class="avatar ${adat.Premium ? 'premium-avatar' : ''}">
+                            ${adat.nev.charAt(0)}
+                        </div>
+                    `}
 
+                    <div class="verified">✓ Ellenőrzött szakember</div>
+
+                    <h3>${adat.Premium ? '👑 ' : ''}${adat.nev}</h3>
                     <p>${adat.szakma}</p>
                     <p>${adat.bemutatkozas || ""}</p>
                     <span>⭐ ${adat.ertekeles || "5.0"} • ${adat.varos}</span>
-<p>📞 ${adat.telefon || "Nincs megadva"}</p>
-<a href="tel:${adat.telefon}">
-  <button>Hívás</button>
-</a>
-<button class="ajanlat-btn" onclick="ajanlatKeres('${adat.nev}')">
-  Ajánlatkérés
-</button>
+                    <p>📞 ${adat.telefon || "Nincs megadva"}</p>
+
+                    <a href="tel:${adat.telefon}">
+                        <button>Hívás</button>
+                    </a>
+
+                    <button class="ajanlat-btn" onclick="ajanlatKeres('${adat.nev}')">
+                        Ajánlatkérés
+                    </button>
                 </div>
             `;
         }
     });
-      });
-    
+
     if (szakemberekLista.innerHTML === "") {
         szakemberekLista.innerHTML = `
             <div class="no-results">
@@ -338,6 +338,7 @@ keresesGomb.addEventListener("click", () => {
             </div>
         `;
     }
+});
 
 szakemberekBetoltese();
 form.addEventListener("submit", async (e) => {
