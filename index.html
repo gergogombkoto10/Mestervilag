@@ -303,17 +303,18 @@ let talalatok = 0;
 
         if (szakmaEgyezik && varosEgyezik) {
           talalatok++;
-            szakemberekLista.innerHTML += `
-                <div class="card ${adat.Premium ? 'premium-card' : ''}">
-                    ${adat.kep ? `<img class="profile-img" src="${adat.kep}" alt="${adat.nev}">` : `
-                        <div class="avatar ${adat.Premium ? 'premium-avatar' : ''}">
-                            ${adat.nev.charAt(0)}
-                        </div>
-                    `}
+           szakemberekLista.innerHTML += `
+    <div class="card ${adat.Premium ? 'premium-card' : ''}">
+        ${adat.kep 
+            ? `<img class="profile-img" src="${adat.kep}" alt="${adat.nev}">`
+            : `<div class="avatar ${adat.Premium ? 'premium-avatar' : ''}">
+                    ${adat.nev.charAt(0)}
+               </div>`
+        }
 
-                    <div class="verified">✓ Ellenőrzött szakember</div>
+        <div class="verified">✓ Ellenőrzött szakember</div>
 
-                    <h3>${adat.Premium ? '👑 ' : ''}${adat.nev}</h3>
+        <h3>${adat.Premium ? '👑 ' : ''}${adat.nev}</h3>
                     <p>${adat.szakma}</p>
                     <p>${adat.bemutatkozas || ""}</p>
                     <span>⭐ ${adat.ertekeles || "5.0"} • ${adat.varos}</span>
