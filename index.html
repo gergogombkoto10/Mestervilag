@@ -328,15 +328,17 @@ keresesGomb.addEventListener("click", () => {
             `;
         }
     });
-});
-  if (szakemberekLista.innerHTML === "") {
-    szakemberekLista.innerHTML = `
-        <div class="no-results">
-            <h3>Nincs találat</h3>
-            <p>Próbálj meg más szakmára vagy városra keresni.</p>
-        </div>
-    `;
-}
+      });
+    
+    if (szakemberekLista.innerHTML === "") {
+        szakemberekLista.innerHTML = `
+            <div class="no-results">
+                <h3>Nincs találat</h3>
+                <p>Próbálj meg más szakmára vagy városra keresni.</p>
+            </div>
+        `;
+    }
+
 szakemberekBetoltese();
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
