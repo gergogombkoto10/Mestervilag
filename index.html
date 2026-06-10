@@ -296,12 +296,13 @@ keresesGomb.addEventListener("click", () => {
     const varos = varosKereso.value.toLowerCase();
 
     szakemberekLista.innerHTML = "";
-
+let talalatok = 0;
     osszesSzakember.forEach((adat) => {
         const szakmaEgyezik = (adat.szakma || "").toLowerCase().includes(szakma);
         const varosEgyezik = (adat.varos || "").toLowerCase().includes(varos);
 
         if (szakmaEgyezik && varosEgyezik) {
+          talalatok++;
             szakemberekLista.innerHTML += `
                 <div class="card ${adat.Premium ? 'premium-card' : ''}">
                     ${adat.kep ? `<img class="profile-img" src="${adat.kep}" alt="${adat.nev}">` : `
@@ -330,7 +331,7 @@ keresesGomb.addEventListener("click", () => {
         }
     });
 
-    if (szakemberekLista.innerHTML === "") {
+ if (talalatok === 0) {
         szakemberekLista.innerHTML = `
             <div class="no-results">
                 <h3>Nincs találat</h3>
