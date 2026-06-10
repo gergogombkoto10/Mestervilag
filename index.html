@@ -31,6 +31,7 @@ A Mestervilág segít összekapcsolni az ügyfeleket és a szakembereket egy mod
    <input id="szakmaKereso" type="text" placeholder="Milyen szakembert keresel?">
 <input id="varosKereso" type="text" placeholder="Város vagy irányítószám">
 <button id="keresesGomb">Keresés</button>
+      
     </div>
   </div>
 </section>
@@ -328,6 +329,14 @@ keresesGomb.addEventListener("click", () => {
         }
     });
 });
+  if (szakemberekLista.innerHTML === "") {
+    szakemberekLista.innerHTML = `
+        <div class="no-results">
+            <h3>Nincs találat</h3>
+            <p>Próbálj meg más szakmára vagy városra keresni.</p>
+        </div>
+    `;
+}
 szakemberekBetoltese();
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
