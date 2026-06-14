@@ -346,10 +346,10 @@ let talalatok = 0;
 szakemberekBetoltese();
   keresesGomb.addEventListener("click", () => {
     setTimeout(() => {
-        szakemberekLista.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
+       window.scrollTo({
+    top: szakemberekLista.offsetTop - 100,
+    behavior: "smooth"
+});
     }, 200);
 });
 form.addEventListener("submit", async (e) => {
