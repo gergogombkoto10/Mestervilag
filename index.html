@@ -340,11 +340,12 @@ let talalatok = 0;
             </div>
         `;
     }
-});
-szakemberekLista.scrollIntoView({
+  szakemberekLista.scrollIntoView({
     behavior: "smooth",
     block: "start"
 });
+});
+
 szakemberekBetoltese();
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
