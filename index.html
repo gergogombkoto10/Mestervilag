@@ -340,13 +340,18 @@ let talalatok = 0;
             </div>
         `;
     }
-  szakemberekLista.scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-});
+
 });
 
 szakemberekBetoltese();
+  keresesGomb.addEventListener("click", () => {
+    setTimeout(() => {
+        szakemberekLista.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }, 200);
+});
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
