@@ -880,3 +880,19 @@ button,
 #csillagok span.active{
     color: #facc15;
 }
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.logo span {
+  font-size: 28px;
+  font-weight: 700;
+}
