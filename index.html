@@ -380,6 +380,21 @@ form.addEventListener("submit", async (e) => {
   }
 });
  window.ajanlatKeres = async function(nev) {
+   window.ertekeles = async function(nev) {
+
+    const pont = prompt(
+        `${nev} értékelése\n\nAdj meg egy pontszámot 1 és 5 között:`
+    );
+
+    if (!pont) return;
+
+    if (pont < 1 || pont > 5) {
+        alert("1 és 5 közötti számot adj meg!");
+        return;
+    }
+
+    alert(`Köszönjük! ${pont} csillagos értékelés rögzítve.`);
+}
     const uzenet = prompt(`Mit szeretnél üzenni neki? (${nev})`);
 
     if (!uzenet) return;
