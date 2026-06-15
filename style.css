@@ -839,3 +839,18 @@ button,
     font-weight:600;
     cursor:pointer;
 }
+#csillagok span {
+    font-size: 40px;
+    cursor: pointer;
+    color: #ccc;
+    transition: all 0.2s ease;
+    margin: 0 3px;
+}
+
+#csillagok span:hover {
+    transform: scale(1.25);
+}
+
+#csillagok span.active {
+    color: #f5b301;
+}
