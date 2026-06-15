@@ -420,8 +420,13 @@ window.csillagValaszt = function(pont) {
         document.querySelectorAll("#csillagok span");
 
     csillagok.forEach((csillag, index) => {
-        csillag.innerText =
-            index < pont ? "★" : "☆";
+       if (index < pont) {
+    csillag.innerText = "★";
+    csillag.classList.add("active");
+} else {
+    csillag.innerText = "☆";
+    csillag.classList.remove("active");
+}
     });
 };
 
