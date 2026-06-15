@@ -420,12 +420,14 @@ window.csillagValaszt = function(pont) {
         document.querySelectorAll("#csillagok span");
 
     csillagok.forEach((csillag, index) => {
-       if (index < pont) {
+      if (index < pont) {
     csillag.innerText = "★";
-    csillag.classList.add("active");
+    csillag.style.color = "#facc15";
+    csillag.style.transform = "scale(1.2)";
 } else {
     csillag.innerText = "☆";
-    csillag.classList.remove("active");
+    csillag.style.color = "#cbd5e1";
+    csillag.style.transform = "scale(1)";
 }
     });
 };
@@ -457,7 +459,7 @@ window.ertekelesKuldes = function() {
 
     <h3 id="ertekelesNev">Értékelés</h3>
 
-    <div id="csillagok" style="font-size:32px; cursor:pointer;">
+    <div id="csillagok" style="font-size:42px; cursor:pointer; color:#9ca3af;">
       <span onclick="csillagValaszt(1)">☆</span>
       <span onclick="csillagValaszt(2)">☆</span>
       <span onclick="csillagValaszt(3)">☆</span>
