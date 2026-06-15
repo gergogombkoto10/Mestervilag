@@ -828,3 +828,14 @@ button,
 .no-results p{
     color:#6b7280;
 }
+.ertekeles-btn{
+    width:100%;
+    margin-top:10px;
+    background:#facc15;
+    color:#111827;
+    border:none;
+    padding:12px;
+    border-radius:10px;
+    font-weight:600;
+    cursor:pointer;
+}
