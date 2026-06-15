@@ -929,3 +929,18 @@ button,
     align-items: center;
     gap: 10px;
 }
+.footer .footer-logo {
+    width: 40px !important;
+    height: 40px !important;
+    max-width: 40px !important;
+    max-height: 40px !important;
+    object-fit: contain !important;
+    border-radius: 50%;
+}
+
+.footer-logo-wrap {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center;
+    gap: 10px;
+}
