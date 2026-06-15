@@ -380,21 +380,22 @@ form.addEventListener("submit", async (e) => {
   }
 });
  window.ajanlatKeres = async function(nev) {
-   window.ertekeles = async function(nev) {
-
+   window.ertekeles = function(nev) {
     const pont = prompt(
-        `${nev} értékelése\n\nAdj meg egy pontszámot 1 és 5 között:`
+        `${nev} értékelése\n\nÍrd be: ⭐ ⭐⭐ ⭐⭐⭐ ⭐⭐⭐⭐ vagy ⭐⭐⭐⭐⭐`
     );
 
     if (!pont) return;
 
-    if (pont < 1 || pont > 5) {
-        alert("1 és 5 közötti számot adj meg!");
+    const csillagok = (pont.match(/⭐/g) || []).length;
+
+    if (csillagok < 1 || csillagok > 5) {
+        alert("1 és 5 csillag között válassz!");
         return;
     }
 
-    alert(`Köszönjük! ${pont} csillagos értékelés rögzítve.`);
-}
+    alert(`Köszönjük! ${csillagok} csillagos értékelés rögzítve.`);
+};
     const uzenet = prompt(`Mit szeretnél üzenni neki? (${nev})`);
 
     if (!uzenet) return;
