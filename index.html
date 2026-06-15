@@ -380,22 +380,7 @@ form.addEventListener("submit", async (e) => {
   }
 });
  window.ajanlatKeres = async function(nev) {
-   window.ertekeles = function(nev) {
-    const pont = prompt(
-        `${nev} értékelése\n\nÍrd be: ⭐ ⭐⭐ ⭐⭐⭐ ⭐⭐⭐⭐ vagy ⭐⭐⭐⭐⭐`
-    );
-
-    if (!pont) return;
-
-    const csillagok = (pont.match(/⭐/g) || []).length;
-
-    if (csillagok < 1 || csillagok > 5) {
-        alert("1 és 5 csillag között válassz!");
-        return;
-    }
-
-    alert(`Köszönjük! ${csillagok} csillagos értékelés rögzítve.`);
-};
+   
     const uzenet = prompt(`Mit szeretnél üzenni neki? (${nev})`);
 
     if (!uzenet) return;
@@ -413,7 +398,22 @@ form.addEventListener("submit", async (e) => {
         console.error(error);
     }
 };
+window.ertekeles = function(nev) {
+    const pont = prompt(
+        `${nev} értékelése\n\nÍrd be: ⭐ ⭐⭐ ⭐⭐⭐ ⭐⭐⭐⭐ vagy ⭐⭐⭐⭐⭐`
+    );
 
+    if (!pont) return;
+
+    const csillagok = (pont.match(/⭐/g) || []).length;
+
+    if (csillagok < 1 || csillagok > 5) {
+        alert("1 és 5 csillag között válassz!");
+        return;
+    }
+
+    alert(`Köszönjük! ${csillagok} csillagos értékelés rögzítve.`);
+};
 </script>
 </body>
 </html>
