@@ -854,3 +854,29 @@ button,
 #csillagok span.active {
     color: #f5b301;
 }
+#ertekelesModal{
+    backdrop-filter: blur(4px);
+}
+
+#ertekelesModal > div{
+    box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    border-radius: 22px !important;
+    padding: 28px !important;
+}
+
+#csillagok span{
+    font-size: 42px;
+    color: #d1d5db;
+    cursor: pointer;
+    transition: .2s ease;
+    margin: 0 4px;
+}
+
+#csillagok span:hover{
+    transform: scale(1.25);
+    color: #facc15;
+}
+
+#csillagok span.active{
+    color: #facc15;
+}
