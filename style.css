@@ -907,3 +907,14 @@ button,
   font-size: 28px;
   font-weight: 700;
 }
+.footer-logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
