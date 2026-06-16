@@ -249,13 +249,32 @@ async function szakemberekBetoltese() {
   const querySnapshot = await getDocs(collection(db, "jelentkezesek"));
 
   szakemberekLista.innerHTML = "";
+const ertekelesSnapshot = await getDocs(collection(db, "ertekelesek"));
+const ertekelesek = {};
 
+ertekelesSnapshot.forEach((doc) => {
+    const e = doc.data();
+
+    if (!ertekelesek[e.szakember]) {
+        ertekelesek[e.szakember] = [];
+    }
+
+    ertekelesek[e.szakember].push(Number(e.csillag));
+});
   querySnapshot.forEach((doc) => {
     const adat = doc.data();
     if (adat.Premium) {
     premiumLista.innerHTML += `
     <div class="card">
         <h3>👑 ${adat.nev}</h3>
+        ${ertekelesek[adat.nev] ? `
+    <p class="rating-line">
+        ⭐ ${(ertekelesek[adat.nev].reduce((a, b) => a + b, 0) / ertekelesek[adat.nev].length).toFixed(1)}
+        (${ertekelesek[adat.nev].length} értékelés)
+    </p>
+` : `
+    <p class="rating-line">⭐ Még nincs értékelés</p>
+`}
         <p>${adat.szakma}</p>
         <p>${adat.bemutatkozas || ""}</p>
         <span>⭐ ${adat.ertekeles || "5.0"} • ${adat.varos}</span>
@@ -278,7 +297,14 @@ if (adat.Premium) {
   <div class="verified">✓ Ellenőrzött szakember</div>
   <h3>  ${adat.Premium ? '👑 ' : ''}  ${adat.nev}</h3>
 
-
+${ertekelesek[adat.nev] ? `
+    <p class="rating-line">
+        ⭐ ${(ertekelesek[adat.nev].reduce((a, b) => a + b, 0) / ertekelesek[adat.nev].length).toFixed(1)}
+        (${ertekelesek[adat.nev].length} értékelés)
+    </p>
+` : `
+    <p class="rating-line">⭐ Még nincs értékelés</p>
+`}
         <p>${adat.szakma}</p>
         <p>${adat.bemutatkozas || ""}</p>
      <span>⭐ ${adat.ertekeles || "5.0"} • ${adat.varos}</span>
