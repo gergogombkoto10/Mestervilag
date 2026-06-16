@@ -287,6 +287,20 @@ if (adat.Premium) {
 } else {
     osszesSzakember.push(adat);
 }
+    osszesSzakember.sort((a, b) => {
+    const aErtekelesek = ertekelesek[a.nev] || [];
+    const bErtekelesek = ertekelesek[b.nev] || [];
+
+    const aAtlag = aErtekelesek.length
+        ? aErtekelesek.reduce((sum, csillag) => sum + csillag, 0) / aErtekelesek.length
+        : 0;
+
+    const bAtlag = bErtekelesek.length
+        ? bErtekelesek.reduce((sum, csillag) => sum + csillag, 0) / bErtekelesek.length
+        : 0;
+
+    return bAtlag - aAtlag;
+});
     szakemberekLista.innerHTML += `
       <div class="card">
   ${adat.kep ? `<img class="profile-img" src="${adat.kep}" alt="${adat.nev}">` : `
