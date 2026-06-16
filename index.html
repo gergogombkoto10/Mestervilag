@@ -438,22 +438,28 @@ window.modalBezar = function() {
     document.getElementById("ertekelesModal").style.display = "none";
 };
 
-window.ertekelesKuldes = function() {
+window.ertekelesKuldes = async function() {
     if (valasztottCsillag === 0) {
         alert("Válassz csillagot!");
         return;
     }
 
-    const velemeny =
-        document.getElementById("velemenySzoveg").value;
+    const velemeny = document.getElementById("velemenySzoveg").value;
 
-    alert(
-        `${aktualisSzakember} értékelése elküldve!\n` +
-        `${valasztottCsillag} csillag\n` +
-        velemeny
-    );
+    try {
+        await addDoc(collection(db, "ertekelesek"), {
+            szakember: aktualisSzakember,
+            csillag: valasztottCsillag,
+            velemeny: velemeny,
+            datum: new Date().toISOString()
+        });
 
-    modalBezar();
+        alert("Köszönjük! Az értékelésed mentve lett.");
+        modalBezar();
+    } catch (error) {
+        alert("Hiba történt az értékelés mentésekor!");
+        console.error(error);
+    }
 };
 </script>
   <div id="ertekelesModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); justify-content:center; align-items:center;">
